@@ -1,13 +1,13 @@
-// Form submission handler
+// Form submission handler for Loops integration
 document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const email = document.getElementById('email').value;
-    const platform = document.getElementById('platform').value;
-    
-    const button = e.target.querySelector('button[type="submit"]');
+    const form = e.target;
+    const formData = new FormData(form);
+    const button = form.querySelector('button[type="submit"]');
     const originalText = button.textContent;
     
+    // Show loading state
     button.innerHTML = `
         <div class="flex items-center justify-center space-x-2">
             <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
@@ -19,25 +19,57 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     `;
     button.disabled = true;
     
-    setTimeout(() => {
+    // Submit to Loops
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors'
+    })
+    .then(response => {
+        if (response.ok) {
+            // Success state
+            button.innerHTML = `
+                <div class="flex items-center justify-center space-x-2">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <span>You're in! 🎉</span>
+                </div>
+            `;
+            button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                form.reset();
+                button.innerHTML = originalText;
+                button.disabled = false;
+                button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
+            }, 3000);
+        } else {
+            throw new Error('Submission failed');
+        }
+    })
+    .catch(error => {
+        console.error('Form submission error:', error);
+        
+        // Error state
         button.innerHTML = `
             <div class="flex items-center justify-center space-x-2">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>
-                <span>You're in! 🎉</span>
+                <span>Try again</span>
             </div>
         `;
-        button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
+        button.style.background = 'linear-gradient(135deg, #DC3545 0%, #C82333 100%)';
         
+        // Reset to original state after 3 seconds
         setTimeout(() => {
-            document.getElementById('email').value = '';
-            document.getElementById('platform').value = '';
             button.innerHTML = originalText;
             button.disabled = false;
             button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
         }, 3000);
-    }, 1500);
+    });
 });
 
 // Animation delay handler
