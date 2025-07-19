@@ -158,7 +158,7 @@ The site automatically deploys to GitHub Pages via GitHub Actions when pushing t
 
 ## 📞 Contact & Support
 
-- **Email**: [hello@chimeapp.com](mailto:hello@chimeapp.com)
+- **Email**: [support@chimealarm.app](mailto:support@chimealarm.app)
 - **Website**: [Chime Official Site](https://spiffaz.github.io/chime-website/)
 - **Support**: [Support Page](https://spiffaz.github.io/chime-website/support.html)
 
