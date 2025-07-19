@@ -1,0 +1,266 @@
+/* Chime Brand Colors from App Design */
+:root {
+    --chime-blue: #007AFF;
+    --chime-green: #34C759;
+    --chime-gray: #8E8E93;
+    --chime-light-gray: #F2F2F7;
+    --chime-dark: #1D1D1F;
+}
+
+.bg-chime-blue { background-color: var(--chime-blue); }
+.bg-chime-green { background-color: var(--chime-green); }
+.bg-chime-light-gray { background-color: var(--chime-light-gray); }
+.text-chime-blue { color: var(--chime-blue); }
+.text-chime-gray { color: var(--chime-gray); }
+.text-chime-dark { color: var(--chime-dark); }
+.border-chime-blue { border-color: var(--chime-blue); }
+
+/* Enhanced gradient background with social vibes */
+.bg-gradient-chime {
+    background: linear-gradient(135deg, #F2F2F7 0%, #E8F4FD 20%, #FFFFFF 50%, #F0F8FF 80%, #E8F4FD 100%);
+}
+
+/* iOS-style blur effect */
+.backdrop-blur-ios {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Enhanced animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 15px 40px rgba(0, 122, 255, 0.2); }
+    50% { box-shadow: 0 25px 60px rgba(0, 122, 255, 0.35); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glow 3s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Enhanced form styles */
+.input-ios {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 122, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.input-ios:focus {
+    border-color: var(--chime-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+/* Enhanced button styles */
+.btn-chime-primary {
+    background: linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%);
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-chime-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+}
+
+.btn-chime-primary:active {
+    transform: translateY(0px);
+}
+
+/* Card styles from app */
+.card-chime {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Compact layout - no scrolling */
+.full-height {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+/* Enhanced phone mockup with much larger desktop size */
+.phone-container {
+    position: relative;
+}
+
+.phone-glow {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: radial-gradient(circle at center, rgba(0, 122, 255, 0.2) 0%, transparent 70%);
+    border-radius: 50px;
+    z-index: -1;
+}
+
+/* Badge styles */
+.badge {
+    background: rgba(52, 199, 89, 0.1);
+    color: var(--chime-green);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(52, 199, 89, 0.2);
+}
+
+/* Social feature highlights */
+.feature-highlight {
+    background: rgba(0, 122, 255, 0.05);
+    border: 1px solid rgba(0, 122, 255, 0.1);
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--chime-blue);
+}
+
+/* Mobile-optimized responsive design - larger text for readability */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 1.75rem;
+        line-height: 1.1;
+    }
+    .content-grid {
+        gap: 0.75rem;
+    }
+    .full-height {
+        height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+    .mobile-phone {
+        width: 160px;
+        height: 320px;
+    }
+    .mobile-content-padding {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    .badge {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+    .feature-highlight {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+    .hero-title {
+        font-size: 2.25rem;
+        line-height: 1.1;
+    }
+    .content-grid {
+        gap: 1rem;
+    }
+    .desktop-phone {
+        width: 240px;
+        height: 480px;
+    }
+    .mobile-content-padding {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 2.75rem;
+        line-height: 1.05;
+    }
+    .content-grid {
+        gap: 1.5rem;
+    }
+    .desktop-phone {
+        width: 280px;
+        height: 560px;
+    }
+    .mobile-content-padding {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .hero-title {
+        font-size: 3.25rem;
+        line-height: 1.05;
+    }
+    .content-grid {
+        gap: 1.75rem;
+    }
+    .desktop-phone {
+        width: 320px;
+        height: 640px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .hero-title {
+        font-size: 3.5rem;
+        line-height: 1.05;
+    }
+    .desktop-phone {
+        width: 360px;
+        height: 720px;
+    }
+}
+
+/* Enhanced visual hierarchy - larger, more readable text */
+.hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+@media (min-width: 1024px) {
+    .hero-subtitle {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+}
+
+/* Better visual balance for large screens - readable sizing */
+.hero-content {
+    max-width: 500px;
+}
+
+@media (min-width: 1280px) {
+    .hero-content {
+        max-width: 550px;
+    }
+}

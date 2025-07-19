@@ -1,0 +1,57 @@
+{
+  "name": "chime-website",
+  "version": "1.0.0",
+  "description": "Official website for Chime - Social Alarms for Groups mobile app",
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "npx http-server src -p 3000 -o",
+    "build": "npm run clean && npm run copy && npm run minify-css && npm run minify-js",
+    "clean": "rm -rf dist && mkdir -p dist/assets/{css,js,images}",
+    "copy": "cp -r src/* dist/",
+    "minify-css": "npx cleancss -o dist/assets/css/styles.min.css dist/assets/css/styles.css",
+    "minify-js": "npx terser dist/assets/js/main.js -o dist/assets/js/main.min.js",
+    "optimize-images": "npx imagemin 'src/assets/images/*' --out-dir=dist/assets/images",
+    "serve": "npx http-server dist -p 8080 -o",
+    "preview": "npm run build && npm run serve",
+    "validate": "npx html-validate src/*.html",
+    "lighthouse": "npx lighthouse http://localhost:8080 --output html --output-path lighthouse-report.html",
+    "test": "npm run validate && echo 'All tests passed!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spiffaz/chime-website.git"
+  },
+  "keywords": [
+    "chime",
+    "social-alarms",
+    "mobile-app",
+    "ios",
+    "android",
+    "website",
+    "landing-page"
+  ],
+  "author": "Chime Team",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.31.0",
+    "http-server": "^14.1.1",
+    "imagemin-cli": "^8.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
+    "html-validate": "^8.20.1",
+    "lighthouse": "^12.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "iOS >= 12",
+    "Android >= 6"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

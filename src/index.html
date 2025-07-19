@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chime - Social Alarms for Groups</title>
+    <meta name="description" content="The first social alarm app. Coordinate with friends, build habits together, and stay connected all day long.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body class="bg-gradient-chime">
+    <!-- Single Page Layout -->
+    <div class="full-height flex flex-col">
+        <!-- Navigation -->
+        <nav class="backdrop-blur-ios bg-white/80 border-b border-gray-100 flex-shrink-0">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-12">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-2">
+                        <div class="w-6 h-6 rounded-lg overflow-hidden shadow-md">
+                            <img src="assets/images/app-icon.png" alt="Chime Logo" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-lg font-bold text-chime-dark">Chime</span>
+                    </div>
+                    
+                    <!-- Navigation Links -->
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="terms.html" class="text-chime-gray hover:text-chime-blue transition-colors text-sm font-medium">Terms</a>
+                        <a href="privacy.html" class="text-chime-gray hover:text-chime-blue transition-colors text-sm font-medium">Privacy</a>
+                        <a href="support.html" class="text-chime-gray hover:text-chime-blue transition-colors text-sm font-medium">Support</a>
+                        <a href="mailto:hello@chimeapp.com" class="text-chime-gray hover:text-chime-blue transition-colors text-sm font-medium">Contact</a>
+                    </div>
+                    
+                    <!-- Mobile Contact -->
+                    <a href="mailto:hello@chimeapp.com" class="md:hidden text-chime-gray hover:text-chime-blue transition-colors text-sm font-medium">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 mobile-content-padding">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="grid lg:grid-cols-2 content-grid items-center">
+                    
+                    <!-- Left Side - Content -->
+                    <div class="text-center lg:text-left animate-fadeIn hero-content">
+                        <!-- Social Innovation Badge -->
+                        <div class="inline-flex items-center mb-3">
+                            <span class="badge">🌟 First social alarm app</span>
+                        </div>
+                        
+                        <!-- Main Headline -->
+                        <h1 class="hero-title font-black text-chime-dark mb-4 leading-tight">
+                            Alarms, reimagined for your 
+                            <span class="text-chime-blue">social life</span>
+                        </h1>
+                        
+                        <!-- Subheadline -->
+                        <p class="hero-subtitle text-chime-gray mb-5 leading-relaxed font-medium">
+                            The first alarm app that lets you share alarms with friends and family. See who's awake, coordinate schedules, and stay connected all day long.
+                        </p>
+                        
+                        <!-- Social Features -->
+                        <div class="flex flex-wrap gap-2 mb-5 justify-center lg:justify-start">
+                            <div class="feature-highlight">
+                                👥 Share alarms
+                            </div>
+                            <div class="feature-highlight">
+                                🔄 Real-time status
+                            </div>
+                            <div class="feature-highlight">
+                                📅 Group coordination
+                            </div>
+                            <div class="feature-highlight">
+                                💬 Stay connected
+                            </div>
+                        </div>
+                        
+                        <!-- Waitlist Form -->
+                        <div class="max-w-sm mx-auto lg:mx-0">
+                            <div class="mb-3">
+                                <h3 class="text-base font-bold text-chime-dark mb-1">
+                                    Join the beta waitlist
+                                </h3>
+                                <p class="text-sm text-chime-gray">
+                                    Get early access before our September launch
+                                </p>
+                            </div>
+                            
+                            <form class="space-y-3" id="waitlistForm">
+                                <div>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        placeholder="Enter your email"
+                                        class="input-ios w-full px-4 py-3 text-chime-dark placeholder-chime-gray text-sm"
+                                        required
+                                    >
+                                </div>
+                                
+                                <div>
+                                    <select 
+                                        id="platform" 
+                                        name="platform" 
+                                        class="input-ios w-full px-4 py-3 text-chime-dark text-sm"
+                                        required
+                                    >
+                                        <option value="">Your platform?</option>
+                                        <option value="ios">iPhone (launching first)</option>
+                                        <option value="android">Android (coming after)</option>
+                                        <option value="both">Both platforms</option>
+                                    </select>
+                                </div>
+                                
+                                <button 
+                                    type="submit" 
+                                    class="btn-chime-primary w-full px-4 py-3 text-white font-bold text-sm"
+                                >
+                                    Get Beta Access
+                                </button>
+                            </form>
+                            
+                            <div class="mt-3 space-y-1">
+                                <p class="text-xs text-chime-gray flex items-center justify-center lg:justify-start space-x-1">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z"/>
+                                    </svg>
+                                    <span>Free beta • No spam • Privacy first</span>
+                                </p>
+                                <p class="text-xs text-chime-gray text-center lg:text-left">
+                                    Only shared alarms are visible to friends
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side - Phone Screenshot -->
+                    <div class="flex justify-center lg:justify-end order-1 lg:order-2 mb-3 lg:mb-0">
+                        <div class="phone-container animate-float">
+                            <div class="phone-glow animate-glow"></div>
+                            <div class="w-64 h-128 lg:w-80 lg:h-160 xl:w-96 xl:h-192 relative z-10 max-h-full">
+                                <img src="assets/images/screenshot.png" alt="Chime App Interface showing group alarm coordination" class="w-full h-full object-contain drop-shadow-2xl">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="flex-shrink-0 backdrop-blur-ios bg-white/80 border-t border-white/30 py-2 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+                <!-- Social Icons -->
+                <div class="flex space-x-3">
+                    <a href="#" class="text-chime-gray hover:text-chime-blue transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-chime-gray hover:text-chime-blue transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-chime-gray hover:text-chime-blue transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-2.08v5.73a8.24 8.24 0 00-5.6-2.14c-2.64 0-5.14 1.73-5.14 4.63 0 2.9 2.5 4.63 5.14 4.63a8.24 8.24 0 005.6-2.14v1.79c0 1.49-1.17 2.86-2.58 2.86-1.69 0-2.79-1.21-2.79-2.57v-.07h-2.08v.07c0 2.5 1.98 4.5 4.87 4.5 2.89 0 4.66-1.93 4.66-4.79V8.93a6.91 6.91 0 004.25 1.45V8.6a4.83 4.83 0 01-4.48-1.91z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Copyright -->
+                <div class="text-center">
+                    <div class="text-xs text-chime-gray">© 2024 Chime. All rights reserved.</div>
+                </div>
+                
+                <!-- Legal Links -->
+                <div class="flex space-x-3 text-xs text-chime-gray">
+                    <a href="terms.html" class="hover:text-chime-blue transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-chime-blue transition-colors">Privacy</a>
+                    <a href="support.html" class="hover:text-chime-blue transition-colors">Support</a>
+                </div>
+            </div>
+        </footer> 
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
