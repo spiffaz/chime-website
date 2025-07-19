@@ -11,6 +11,9 @@
     "minify-css": "npx cleancss -o dist/assets/css/styles.min.css dist/assets/css/styles.css",
     "minify-js": "npx terser dist/assets/js/main.js -o dist/assets/js/main.min.js",
     "optimize-images": "npx imagemin 'src/assets/images/*' --out-dir=dist/assets/images",
+    "generate-favicons": "npm run generate-favicon-sizes && npm run generate-favicon-ico",
+    "generate-favicon-sizes": "npx sharp-cli resize 16 16 -i src/assets/images/app-icon.png -o src/assets/images/favicon-16x16.png && npx sharp-cli resize 32 32 -i src/assets/images/app-icon.png -o src/assets/images/favicon-32x32.png && npx sharp-cli resize 180 180 -i src/assets/images/app-icon.png -o src/assets/images/apple-touch-icon.png && npx sharp-cli resize 192 192 -i src/assets/images/app-icon.png -o src/assets/images/android-chrome-192x192.png && npx sharp-cli resize 512 512 -i src/assets/images/app-icon.png -o src/assets/images/android-chrome-512x512.png",
+    "generate-favicon-ico": "magick src/assets/images/favicon-16x16.png src/assets/images/favicon-32x32.png src/assets/images/favicon.ico",
     "serve": "npx http-server dist -p 8080 -o",
     "preview": "npm run build && npm run serve",
     "validate": "npx html-validate src/*.html",
@@ -34,14 +37,15 @@
   "license": "MIT",
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
-    "terser": "^5.31.0",
+    "html-validate": "^8.20.1",
     "http-server": "^14.1.1",
     "imagemin-cli": "^8.0.0",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^10.0.0",
     "imagemin-svgo": "^11.0.1",
-    "html-validate": "^8.20.1",
-    "lighthouse": "^12.0.0"
+    "lighthouse": "^12.0.0",
+    "sharp-cli": "^5.2.0",
+    "terser": "^5.31.0"
   },
   "browserslist": [
     "> 1%",
