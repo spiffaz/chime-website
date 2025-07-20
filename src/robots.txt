@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://spiffaz.github.io/chime-website/sitemap.xml
+Sitemap: https://chimealarm.app/sitemap.xml
 
 # Allow all major search engines
 User-agent: Googlebot
