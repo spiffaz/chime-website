@@ -141,6 +141,121 @@
       
       // Show banner when page loads
       window.addEventListener('load', showCookieBanner);
+      
+      // Enhanced Analytics Tracking
+      let scrollDepths = [25, 50, 75, 90];
+      let scrollTracked = [];
+      
+      // Scroll depth tracking
+      function trackScrollDepth() {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        
+        scrollDepths.forEach(depth => {
+          if (scrollPercent >= depth && !scrollTracked.includes(depth)) {
+            gtag('event', 'scroll_depth', {
+              'event_category': 'engagement',
+              'event_label': depth + '%',
+              'value': depth
+            });
+            scrollTracked.push(depth);
+          }
+        });
+      }
+      
+      // Throttled scroll listener
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(trackScrollDepth, 250);
+      });
+      
+      // Track page engagement time
+      let startTime = Date.now();
+      let maxScrollReached = 0;
+      
+      window.addEventListener('beforeunload', function() {
+        const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        maxScrollReached = Math.max(maxScrollReached, scrollPercent);
+        
+        gtag('event', 'page_engagement', {
+          'event_category': 'engagement',
+          'event_label': 'time_on_page',
+          'value': timeOnPage,
+          'custom_parameters': {
+            'max_scroll_depth': maxScrollReached
+          }
+        });
+      });
+      
+      // Button and link click tracking
+      document.addEventListener('DOMContentLoaded', function() {
+        // Track navigation link clicks
+        document.querySelectorAll('nav a, .navigation a').forEach(link => {
+          link.addEventListener('click', function() {
+            const linkText = this.textContent.trim();
+            const linkHref = this.getAttribute('href');
+            
+            gtag('event', 'click', {
+              'event_category': 'navigation',
+              'event_label': linkText,
+              'value': linkHref
+            });
+          });
+        });
+        
+        // Track CTA button clicks
+        document.querySelectorAll('.btn-chime-primary, .feature-highlight, .badge').forEach(button => {
+          button.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            const buttonClass = this.className;
+            
+            gtag('event', 'click', {
+              'event_category': 'cta',
+              'event_label': buttonText,
+              'value': buttonClass.includes('btn-chime-primary') ? 'primary_cta' : 'secondary_element'
+            });
+          });
+        });
+        
+        // Track email clicks
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+          link.addEventListener('click', function() {
+            gtag('event', 'click', {
+              'event_category': 'contact',
+              'event_label': 'email_click',
+              'value': this.getAttribute('href')
+            });
+          });
+        });
+        
+        // Track social icon clicks
+        document.querySelectorAll('footer a[href="#"]').forEach(link => {
+          link.addEventListener('click', function() {
+            gtag('event', 'click', {
+              'event_category': 'social',
+              'event_label': 'social_icon_click',
+              'value': 'footer_social'
+            });
+          });
+        });
+        
+        // Track external link clicks
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+          link.addEventListener('click', function() {
+            const hostname = new URL(this.href).hostname;
+            if (hostname !== window.location.hostname) {
+              gtag('event', 'click', {
+                'event_category': 'outbound',
+                'event_label': 'external_link',
+                'value': hostname
+              });
+            }
+          });
+        });
+      });
     </script>
     
     <meta charset="UTF-8">

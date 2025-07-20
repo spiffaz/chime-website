@@ -45,6 +45,23 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
         
         // Check if Loops returned success
         if (data.success === true) {
+            // Track successful form submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'engagement',
+                    'event_label': 'waitlist_signup_success',
+                    'value': 1,
+                    'user_group': userGroup
+                });
+                
+                // Track as conversion
+                gtag('event', 'conversion', {
+                    'event_category': 'conversion',
+                    'event_label': 'beta_waitlist',
+                    'value': 1
+                });
+            }
+            
             // Show success state
             button.innerHTML = `
                 <div class="flex items-center justify-center space-x-2">
@@ -71,6 +88,15 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     .catch(error => {
         console.error('Form submission error:', error);
         
+        // Track form submission error
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit', {
+                'event_category': 'engagement',
+                'event_label': 'waitlist_signup_error',
+                'value': 0
+            });
+        }
+        
         // Show error state
         button.innerHTML = `
             <div class="flex items-center justify-center space-x-2">
@@ -88,6 +114,45 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
             button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
         }, 3000);
     });
+});
+
+// Track form interactions
+document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.getElementById('email');
+    const platformSelect = document.getElementById('platform');
+    let formStarted = false;
+    
+    // Track when user starts filling the form
+    function trackFormStart() {
+        if (!formStarted && typeof gtag !== 'undefined') {
+            gtag('event', 'form_start', {
+                'event_category': 'engagement',
+                'event_label': 'waitlist_form_start',
+                'value': 1
+            });
+            formStarted = true;
+        }
+    }
+    
+    if (emailInput) {
+        emailInput.addEventListener('focus', trackFormStart);
+        emailInput.addEventListener('input', trackFormStart);
+    }
+    
+    if (platformSelect) {
+        platformSelect.addEventListener('focus', trackFormStart);
+        platformSelect.addEventListener('change', function() {
+            trackFormStart();
+            // Track platform selection
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_interaction', {
+                    'event_category': 'engagement',
+                    'event_label': 'platform_selected',
+                    'value': this.value
+                });
+            }
+        });
+    }
 });
 
 // Animation delay handler
