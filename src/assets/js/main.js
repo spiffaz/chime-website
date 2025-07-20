@@ -26,9 +26,10 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     `;
     button.disabled = true;
     
-    // Submit to Loops using fetch with proper data format
+    // Submit to Loops with both email and platform
     const formData = new FormData();
     formData.append('email', email);
+    formData.append('platform', platform);
     
     fetch('https://app.loops.so/api/newsletter-form/cmdaurtvm0soo0i0jjzoj0snt', {
         method: 'POST',
@@ -48,9 +49,6 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
         `;
         button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
         
-        // Store platform preference separately (since Loops may only accept email)
-        localStorage.setItem('chime_platform_' + email, platform);
-        
         // Reset form after 3 seconds
         setTimeout(() => {
             form.reset();
@@ -62,58 +60,23 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     .catch(error => {
         console.error('Form submission error:', error);
         
-        // Try fallback submission method
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.name = 'loops-form-target';
-        document.body.appendChild(iframe);
+        // Show error state
+        button.innerHTML = `
+            <div class="flex items-center justify-center space-x-2">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span>Try again</span>
+            </div>
+        `;
+        button.style.background = 'linear-gradient(135deg, #DC3545 0%, #C82333 100%)';
         
-        form.target = 'loops-form-target';
-        
-        // Create a simple form with just the email for Loops
-        const simpleForm = document.createElement('form');
-        simpleForm.action = 'https://app.loops.so/api/newsletter-form/cmdaurtvm0soo0i0jjzoj0snt';
-        simpleForm.method = 'POST';
-        simpleForm.target = 'loops-form-target';
-        simpleForm.style.display = 'none';
-        
-        const emailInput = document.createElement('input');
-        emailInput.type = 'email';
-        emailInput.name = 'email';
-        emailInput.value = email;
-        
-        simpleForm.appendChild(emailInput);
-        document.body.appendChild(simpleForm);
-        simpleForm.submit();
-        
-        // Show success state
+        // Reset to original state after 3 seconds
         setTimeout(() => {
-            button.innerHTML = `
-                <div class="flex items-center justify-center space-x-2">
-                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                    </svg>
-                    <span>You're in! 🎉</span>
-                </div>
-            `;
-            button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
-            
-            // Clean up
-            document.body.removeChild(iframe);
-            document.body.removeChild(simpleForm);
-            form.target = '';
-            
-            // Store platform preference
-            localStorage.setItem('chime_platform_' + email, platform);
-            
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                form.reset();
-                button.innerHTML = originalText;
-                button.disabled = false;
-                button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
-            }, 3000);
-        }, 1000);
+            button.innerHTML = originalText;
+            button.disabled = false;
+            button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
+        }, 3000);
     });
 });
 
