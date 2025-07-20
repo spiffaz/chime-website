@@ -1,4 +1,4 @@
-// Form submission handler for Loops integration
+// Form submission handler for Google Forms integration
 document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -7,7 +7,6 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     const originalText = button.textContent;
     
     const email = document.getElementById('email').value;
-    const firstName = document.getElementById('firstName').value;
     const platform = document.getElementById('platform').value;
     
     if (!email || !platform) {
@@ -27,22 +26,20 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     `;
     button.disabled = true;
     
-    // Submit to Loops using standard fields and notes for platform
-    const formData = new FormData();
-    formData.append('email', email);
-    if (firstName) {
-        formData.append('firstName', firstName);
-    }
-    formData.append('notes', `Platform: ${platform}`);
+    // Submit to Google Forms using hidden iframe
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'google-form-target';
+    document.body.appendChild(iframe);
     
-    fetch('https://app.loops.so/api/newsletter-form/cmdaurtvm0soo0i0jjzoj0snt', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        console.log('Loops response:', response);
-        
-        // Show success state
+    // Set form target to iframe
+    form.target = 'google-form-target';
+    
+    // Submit form
+    form.submit();
+    
+    // Show success state after a short delay
+    setTimeout(() => {
         button.innerHTML = `
             <div class="flex items-center justify-center space-x-2">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -53,35 +50,16 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
         `;
         button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
         
-        // Reset form after 3 seconds
+        // Clean up and reset form after 3 seconds
         setTimeout(() => {
+            document.body.removeChild(iframe);
+            form.target = '';
             form.reset();
             button.innerHTML = originalText;
             button.disabled = false;
             button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
         }, 3000);
-    })
-    .catch(error => {
-        console.error('Form submission error:', error);
-        
-        // Show error state
-        button.innerHTML = `
-            <div class="flex items-center justify-center space-x-2">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <span>Try again</span>
-            </div>
-        `;
-        button.style.background = 'linear-gradient(135deg, #DC3545 0%, #C82333 100%)';
-        
-        // Reset to original state after 3 seconds
-        setTimeout(() => {
-            button.innerHTML = originalText;
-            button.disabled = false;
-            button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
-        }, 3000);
-    });
+    }, 1000);
 });
 
 // Animation delay handler
