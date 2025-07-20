@@ -114,6 +114,16 @@
                                 </div>
                                 
                                 <div>
+                                    <input 
+                                        type="text" 
+                                        id="firstName" 
+                                        name="firstName" 
+                                        placeholder="Your first name (optional)"
+                                        class="input-ios w-full px-4 py-3 text-chime-dark placeholder-chime-gray text-sm"
+                                    >
+                                </div>
+                                
+                                <div>
                                     <select 
                                         id="platform" 
                                         name="platform" 
@@ -126,6 +136,9 @@
                                         <option value="both">Both platforms</option>
                                     </select>
                                 </div>
+                                
+                                <!-- Hidden field to store platform in notes since custom properties may not work via form -->
+                                <input type="hidden" id="notes" name="notes" value="">
                                 
                                 <button 
                                     type="submit" 

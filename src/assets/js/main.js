@@ -7,10 +7,11 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     const originalText = button.textContent;
     
     const email = document.getElementById('email').value;
+    const firstName = document.getElementById('firstName').value;
     const platform = document.getElementById('platform').value;
     
     if (!email || !platform) {
-        alert('Please fill in all required fields.');
+        alert('Please fill in your email and select a platform.');
         return;
     }
     
@@ -26,10 +27,13 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     `;
     button.disabled = true;
     
-    // Submit to Loops with both email and platform
+    // Submit to Loops using standard fields and notes for platform
     const formData = new FormData();
     formData.append('email', email);
-    formData.append('platform', platform);
+    if (firstName) {
+        formData.append('firstName', firstName);
+    }
+    formData.append('notes', `Platform: ${platform}`);
     
     fetch('https://app.loops.so/api/newsletter-form/cmdaurtvm0soo0i0jjzoj0snt', {
         method: 'POST',
