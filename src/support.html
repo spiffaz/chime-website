@@ -1,6 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Consent Mode (before GA) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      // Default consent to denied
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+    </script>
+    
+    <!-- Cookie Consent Banner CSS -->
+    <style>
+      .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid #e5e5e5;
+        padding: 20px;
+        z-index: 10000;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
+      .cookie-banner.show {
+        display: block;
+        animation: slideUp 0.3s ease-out;
+      }
+      @keyframes slideUp {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+      }
+      .cookie-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .cookie-text {
+        flex: 1;
+        min-width: 300px;
+        color: #374151;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .cookie-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .cookie-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .cookie-btn-accept {
+        background: #007AFF;
+        color: white;
+      }
+      .cookie-btn-accept:hover {
+        background: #0056CC;
+      }
+      .cookie-btn-reject {
+        background: #f8f9fa;
+        color: #374151;
+        border: 1px solid #d1d5db;
+      }
+      .cookie-btn-reject:hover {
+        background: #e5e7eb;
+      }
+      @media (max-width: 768px) {
+        .cookie-content {
+          flex-direction: column;
+          text-align: center;
+        }
+        .cookie-text {
+          min-width: auto;
+        }
+      }
+    </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JHVLPRWET"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0JHVLPRWET');
+      
+      // Cookie consent functions
+      function acceptCookies() {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted',
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+        localStorage.setItem('cookieConsent', 'accepted');
+        hideCookieBanner();
+      }
+      
+      function rejectCookies() {
+        gtag('consent', 'update', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied'
+        });
+        localStorage.setItem('cookieConsent', 'rejected');
+        hideCookieBanner();
+      }
+      
+      function hideCookieBanner() {
+        document.getElementById('cookieBanner').classList.remove('show');
+      }
+      
+      function showCookieBanner() {
+        const consent = localStorage.getItem('cookieConsent');
+        if (!consent) {
+          document.getElementById('cookieBanner').classList.add('show');
+        } else if (consent === 'accepted') {
+          acceptCookies();
+        }
+      }
+      
+      // Show banner when page loads
+      window.addEventListener('load', showCookieBanner);
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support - Chime</title>
@@ -177,5 +319,23 @@
             <div class="text-xs text-chime-gray">© 2024 Chime. All rights reserved.</div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <strong>🍪 We use cookies to improve your experience</strong><br>
+                We use analytics cookies to understand how you use our website and improve our service. You can accept or reject these cookies. <a href="privacy.html" style="color: #007AFF; text-decoration: underline;">Learn more</a>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectCookies()">
+                    Reject Optional Cookies
+                </button>
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">
+                    Accept All Cookies
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
