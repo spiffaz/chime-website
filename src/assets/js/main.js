@@ -1,4 +1,4 @@
-// Form submission handler for Google Forms integration
+// Form submission handler for Loops integration
 document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -7,9 +7,9 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     const originalText = button.textContent;
     
     const email = document.getElementById('email').value;
-    const platform = document.getElementById('platform').value;
+    const userGroup = document.getElementById('platform').value;
     
-    if (!email || !platform) {
+    if (!email || !userGroup) {
         alert('Please fill in your email and select a platform.');
         return;
     }
@@ -26,61 +26,63 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     `;
     button.disabled = true;
     
-    // Create URL-encoded form data for Google Forms
-    const params = new URLSearchParams();
-    params.append('entry.618727045', email);
-    params.append('entry.1946796245', platform.toUpperCase()); // Ensure uppercase for consistency
-    params.append('fvv', '1');
-    params.append('pageHistory', '0');
+    // Create form data for Loops
+    const formData = new URLSearchParams();
+    formData.append('email', email);
+    formData.append('userGroup', userGroup);
     
-    // Submit to Google Forms using fetch
-    fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2EtsUxthvv7vMKG-1jSbDh17LB6spdoQAbNQlAgo0qCLgxw/formResponse', {
+    // Submit to Loops using fetch
+    fetch('https://app.loops.so/api/newsletter-form/cmdaurtvm0soo0i0jjzoj0snt', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: params,
-        mode: 'no-cors'
+        body: formData
     })
-    .then(() => {
-        console.log('Form submitted successfully');
+    .then(response => response.json())
+    .then(data => {
+        console.log('Form submitted successfully', data);
         
-        // Show success state
-        button.innerHTML = `
-            <div class="flex items-center justify-center space-x-2">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                </svg>
-                <span>You're in! 🎉</span>
-            </div>
-        `;
-        button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
-        
-        // Reset form after 3 seconds
-        setTimeout(() => {
-            form.reset();
-            button.innerHTML = originalText;
-            button.disabled = false;
-            button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
-        }, 3000);
+        // Check if Loops returned success
+        if (data.success === true) {
+            // Show success state
+            button.innerHTML = `
+                <div class="flex items-center justify-center space-x-2">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <span>You're in! 🎉</span>
+                </div>
+            `;
+            button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                form.reset();
+                button.innerHTML = originalText;
+                button.disabled = false;
+                button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
+            }, 3000);
+        } else {
+            // Handle Loops error response
+            throw new Error(data.message || 'Submission failed');
+        }
     })
     .catch(error => {
         console.error('Form submission error:', error);
         
-        // Even if fetch fails due to CORS, the form might still be submitted
-        // So show success state anyway
+        // Show error state
         button.innerHTML = `
             <div class="flex items-center justify-center space-x-2">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>
-                <span>You're in! 🎉</span>
+                <span>Please try again</span>
             </div>
         `;
-        button.style.background = 'linear-gradient(135deg, var(--chime-green) 0%, #28A745 100%)';
+        button.style.background = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
         
         setTimeout(() => {
-            form.reset();
             button.innerHTML = originalText;
             button.disabled = false;
             button.style.background = 'linear-gradient(135deg, var(--chime-blue) 0%, #0056CC 100%)';
