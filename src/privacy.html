@@ -306,7 +306,7 @@
                 <!-- Header -->
                 <div class="text-center mb-8">
                     <h1 class="text-3xl font-black text-chime-dark mb-2">Privacy Policy</h1>
-                    <p class="text-chime-gray">Last updated: July 19, 2025</p>
+                    <p class="text-chime-gray">Last updated: August 9, 2025</p>
                     <div class="inline-flex items-center mt-3">
                         <span class="badge">🛡️ Privacy first • No spam • Secure</span>
                     </div>
@@ -316,29 +316,75 @@
                 <div class="prose prose-lg max-w-none text-chime-dark space-y-6">
                     <section>
                         <h2 class="text-xl font-bold text-chime-dark mb-3">1. Introduction</h2>
-                        <p class="text-chime-gray leading-relaxed">
-                            At Chime, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application. We are committed to protecting your personal data and being transparent about our practices.
-                        </p>
+                        <div class="text-chime-gray leading-relaxed space-y-3">
+                            <p>
+                                SLJ Labs Limited ("we," "our," or "us"), operating the Chime application, is a UK-based company committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Chime iOS mobile application.
+                            </p>
+                            <p>
+                                As a UK company, we comply with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. We are registered with the Information Commissioner's Office (ICO).
+                            </p>
+                            <div class="bg-blue-50 border-l-4 border-chime-blue p-3 rounded">
+                                <p class="text-sm"><strong>Data Controller:</strong> SLJ Labs Limited, United Kingdom<br>
+                                <strong>Contact:</strong> privacy@chimealarm.app</p>
+                            </div>
+                        </div>
                     </section>
 
                     <section>
                         <h2 class="text-xl font-bold text-chime-dark mb-3">2. Information We Collect</h2>
                         <div class="text-chime-gray leading-relaxed space-y-4">
                             <div>
-                                <h3 class="font-semibold text-chime-dark mb-2">Personal Information</h3>
+                                <h3 class="font-semibold text-chime-dark mb-2">Information You Provide</h3>
                                 <ul class="list-disc list-inside space-y-1 ml-4">
-                                    <li>Email address (for account creation and communication)</li>
-                                    <li>Profile information you choose to provide</li>
-                                    <li>Contact information for friend connections</li>
+                                    <li><strong>Account Data:</strong> Name, email, profile picture (optional)</li>
+                                    <li><strong>Authentication:</strong> Apple ID, Google Account, or email/password</li>
+                                    <li><strong>Alarm Settings:</strong> Times, labels, sounds, and preferences</li>
+                                    <li><strong>Group Data:</strong> Groups created/joined, shared alarms, invitation codes</li>
+                                    <li><strong>Timer & Stopwatch:</strong> Your timer and stopwatch data</li>
                                 </ul>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-chime-dark mb-2">App Usage Data</h3>
+                                <h3 class="font-semibold text-chime-dark mb-2">Information We Collect Automatically</h3>
                                 <ul class="list-disc list-inside space-y-1 ml-4">
-                                    <li>Alarm settings and preferences</li>
-                                    <li>Shared alarm status and interactions</li>
-                                    <li>App usage patterns and feature usage</li>
-                                    <li>Device information and technical data</li>
+                                    <li><strong>Device Information:</strong> iPhone model, iOS version, app version</li>
+                                    <li><strong>Usage Data:</strong> Features used, alarm success rates, app performance</li>
+                                    <li><strong>Crash Reports:</strong> Technical data to improve stability</li>
+                                    <li><strong>Universal Links:</strong> Group invitation interactions</li>
+                                    <li><strong>Ad Data (Free Tier):</strong> Ad impressions and interactions via Google AdMob</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Device Permissions (When Granted)</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li><strong>Notifications:</strong> To deliver alarm alerts</li>
+                                    <li><strong>Calendar:</strong> To create events for your alarms (optional)</li>
+                                    <li><strong>Contacts:</strong> To invite friends to groups (accessed only when sharing)</li>
+                                    <li><strong>Motion & Fitness:</strong> For Step Counter challenges (optional)</li>
+                                    <li><strong>Background Refresh:</strong> To ensure alarm reliability</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Analytics Data (PostHog - Opt-in Only)</h3>
+                                <div class="bg-blue-50 border-l-4 border-chime-blue p-3 rounded mb-2">
+                                    <p class="font-semibold text-chime-blue text-sm">🔒 Your Control: Analytics require your explicit consent and can be disabled anytime.</p>
+                                </div>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li>App version, iOS version, and device model</li>
+                                    <li>Feature usage patterns and performance metrics</li>
+                                    <li>Error logs and crash reports (for app improvement)</li>
+                                    <li>UI response times and memory usage</li>
+                                    <li>Authentication method used (not credentials)</li>
+                                    <li>Session recording (separate opt-in required)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Data We DO NOT Collect</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li>Location data or GPS coordinates</li>
+                                    <li>Contacts, photos, or media files</li>
+                                    <li>Personal communications or messages</li>
+                                    <li>Calendar events (processed locally only)</li>
+                                    <li>Financial or payment information</li>
                                 </ul>
                             </div>
                         </div>
@@ -346,16 +392,37 @@
 
                     <section>
                         <h2 class="text-xl font-bold text-chime-dark mb-3">3. How We Use Your Information</h2>
-                        <div class="text-chime-gray leading-relaxed space-y-2">
-                            <p>We use your information to:</p>
-                            <ul class="list-disc list-inside space-y-1 ml-4">
-                                <li>Provide and maintain the Chime service</li>
-                                <li>Enable social alarm sharing with your chosen contacts</li>
-                                <li>Send important app notifications and updates</li>
-                                <li>Improve our app functionality and user experience</li>
-                                <li>Provide customer support</li>
-                                <li>Ensure app security and prevent misuse</li>
-                            </ul>
+                        <div class="text-chime-gray leading-relaxed space-y-4">
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Core App Functionality</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li>Provide and maintain the Chime service across all devices</li>
+                                    <li>Enable secure authentication with Apple ID, Google, or email</li>
+                                    <li>Sync your alarms and settings across devices (CloudKit)</li>
+                                    <li>Enable group alarm coordination (Firebase)</li>
+                                    <li>Send critical alarm notifications and app updates</li>
+                                    <li>Provide customer support and technical assistance</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">App Improvement (With Your Consent)</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li>Analyze feature usage to improve app functionality</li>
+                                    <li>Monitor performance and identify technical issues</li>
+                                    <li>Conduct A/B testing for new features (feature flags)</li>
+                                    <li>Track error patterns to enhance stability</li>
+                                    <li>Understand user behavior to optimize user experience</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Data Processing Locations</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li><strong>Analytics Data:</strong> Processed by PostHog in EU data centers (GDPR-compliant)</li>
+                                    <li><strong>Personal Data:</strong> Stored in Apple CloudKit (your region)</li>
+                                    <li><strong>Group Data:</strong> Real-time coordination via Firebase (multi-region)</li>
+                                    <li><strong>Authentication:</strong> Apple/Google servers + Firebase Auth</li>
+                                </ul>
+                            </div>
                         </div>
                     </section>
 
@@ -364,83 +431,191 @@
                         <div class="text-chime-gray leading-relaxed space-y-4">
                             <div class="bg-blue-50 border-l-4 border-chime-blue p-4 rounded">
                                 <p class="font-semibold text-chime-blue mb-1">🔒 Your Control</p>
-                                <p class="text-sm">Only alarms you explicitly choose to share are visible to your friends. Private alarms remain completely private.</p>
+                                <p class="text-sm">Only alarms you explicitly choose to share are visible to your friends. Private alarms remain completely private. Analytics data is only collected with your explicit consent.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Third-Party Services</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li><strong>Apple CloudKit:</strong> Personal data sync across your iOS devices - <a href="https://www.apple.com/uk/legal/privacy/" class="text-chime-blue hover:underline" target="_blank">Apple Privacy</a></li>
+                                    <li><strong>Firebase (Google):</strong> Real-time database, authentication, messaging - <a href="https://firebase.google.com/support/privacy" class="text-chime-blue hover:underline" target="_blank">Firebase Privacy</a></li>
+                                    <li><strong>RevenueCat:</strong> Subscription management (no payment data stored) - <a href="https://www.revenuecat.com/privacy" class="text-chime-blue hover:underline" target="_blank">RevenueCat Privacy</a></li>
+                                    <li><strong>PostHog:</strong> Analytics (EU servers, opt-in only) - <a href="https://posthog.com/privacy" class="text-chime-blue hover:underline" target="_blank">PostHog Privacy</a></li>
+                                    <li><strong>Google AdMob:</strong> Ads for free tier users - <a href="https://policies.google.com/privacy" class="text-chime-blue hover:underline" target="_blank">Google Privacy</a></li>
+                                </ul>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-chime-dark mb-2">We DO NOT:</h3>
                                 <ul class="list-disc list-inside space-y-1 ml-4">
                                     <li>Sell your personal information to third parties</li>
-                                    <li>Share your data with advertisers</li>
+                                    <li>Share your data with advertisers or marketers</li>
                                     <li>Access your private alarms or personal content</li>
                                     <li>Send promotional emails without your consent</li>
+                                    <li>Share analytics data with anyone except PostHog (and only with your consent)</li>
+                                    <li>Use your data for AI training or model development</li>
                                 </ul>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-chime-dark mb-2">We MAY share information:</h3>
                                 <ul class="list-disc list-inside space-y-1 ml-4">
-                                    <li>With friends you've connected with (only shared alarms)</li>
+                                    <li>With friends you've connected with (only shared alarms and group data)</li>
                                     <li>When required by law or legal process</li>
                                     <li>To protect the safety and security of our users</li>
+                                    <li>With service providers who help us operate the app (under strict data processing agreements)</li>
                                 </ul>
                             </div>
                         </div>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-bold text-chime-dark mb-3">5. Data Security</h2>
-                        <p class="text-chime-gray leading-relaxed">
-                            We implement industry-standard security measures to protect your personal information, including encryption in transit and at rest, secure authentication, and regular security audits. However, no method of transmission over the internet is 100% secure.
-                        </p>
-                    </section>
-
-                    <section>
-                        <h2 class="text-xl font-bold text-chime-dark mb-3">6. Data Retention</h2>
-                        <p class="text-chime-gray leading-relaxed">
-                            We retain your personal information only as long as necessary to provide our services and comply with legal obligations. You can request deletion of your account and associated data at any time.
-                        </p>
-                    </section>
-
-                    <section>
-                        <h2 class="text-xl font-bold text-chime-dark mb-3">7. Your Rights (GDPR & CCPA Compliance)</h2>
-                        <div class="text-chime-gray leading-relaxed space-y-2">
-                            <p>You have the right to:</p>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">5. Legal Basis for Processing (UK GDPR)</h2>
+                        <div class="text-chime-gray leading-relaxed space-y-3">
+                            <p>We process your personal data under the following legal bases:</p>
                             <ul class="list-disc list-inside space-y-1 ml-4">
-                                <li>Access your personal data</li>
-                                <li>Correct inaccurate information</li>
-                                <li>Delete your account and data</li>
-                                <li>Restrict or object to data processing</li>
-                                <li>Data portability</li>
-                                <li>Withdraw consent at any time</li>
+                                <li><strong>Contract:</strong> To provide the Chime service you've requested</li>
+                                <li><strong>Consent:</strong> For analytics, marketing, and optional features</li>
+                                <li><strong>Legitimate Interests:</strong> To improve our service and ensure security</li>
+                                <li><strong>Legal Obligation:</strong> To comply with UK law</li>
                             </ul>
                         </div>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-bold text-chime-dark mb-3">8. Children's Privacy</h2>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">6. Payments & Subscriptions</h2>
+                        <div class="text-chime-gray leading-relaxed space-y-3">
+                            <p>Chime offers both free and premium subscription options:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><strong>Free Tier:</strong> Core features will always remain free</li>
+                                <li><strong>Payment Processing:</strong> All payments are processed through the Apple App Store. Where permitted by law and platform policies, subscription management may be handled by our payment service provider (currently RevenueCat)</li>
+                                <li><strong>Payment Security:</strong> We never directly receive, process, or store your payment card details</li>
+                                <li><strong>Subscription Data:</strong> Only subscription status and tier information is shared with us</li>
+                                <li><strong>Changes:</strong> We'll notify you at least 30 days before any pricing changes</li>
+                            </ul>
+                            <p class="text-sm mt-2">For users in jurisdictions where alternative payment methods are required or permitted by law, we may offer additional payment options in compliance with local regulations.</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">7. Data Security</h2>
+                        <p class="text-chime-gray leading-relaxed">
+                            We implement industry-standard security measures including TLS encryption, secure authentication, regular security audits, and incident response procedures. We report any data breaches to the ICO within 72 hours as required by UK GDPR.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">8. Data Retention</h2>
+                        <div class="text-chime-gray leading-relaxed space-y-4">
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Configurable Data Retention</h3>
+                                <p class="mb-2">You control how long we keep your data with configurable retention periods in the app:</p>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li><strong>1 Week (7 days)</strong> - Minimal data retention</li>
+                                    <li><strong>1 Month (30 days)</strong> - Default setting</li>
+                                    <li><strong>3 Months (90 days)</strong> - Extended usage patterns</li>
+                                    <li><strong>6 Months (180 days)</strong> - Long-term insights</li>
+                                    <li><strong>1 Year (365 days)</strong> - Maximum retention</li>
+                                </ul>
+                                <p class="text-sm mt-2">Data older than your selected period is automatically deleted from all systems.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Account Data Retention</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li><strong>Authentication Data:</strong> Retained while your account is active</li>
+                                    <li><strong>App Usage Data:</strong> Based on your retention settings</li>
+                                    <li><strong>Analytics Data:</strong> Based on your retention settings (if opted in)</li>
+                                    <li><strong>Group Data:</strong> Retained until you leave groups or delete account</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Complete Data Deletion</h3>
+                                <p>You can request complete deletion of your account and all associated data through the app's Privacy Settings. This process:</p>
+                                <ul class="list-disc list-inside space-y-1 ml-4 mt-2">
+                                    <li>Removes all personal data from our servers</li>
+                                    <li>Deletes analytics data from PostHog</li>
+                                    <li>Revokes authentication tokens</li>
+                                    <li>Removes you from all shared groups</li>
+                                    <li>Completes within 30 days (GDPR compliance)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">9. Your Rights (UK GDPR)</h2>
+                        <div class="text-chime-gray leading-relaxed space-y-4">
+                            <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                                <p class="font-semibold text-green-700 mb-1">✅ Your UK Data Rights</p>
+                                <p class="text-sm text-green-600">Under UK GDPR, you have extensive rights over your personal data.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Your UK GDPR Rights</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li><strong>Right of Access:</strong> Request a copy of your personal data</li>
+                                    <li><strong>Right to Rectification:</strong> Correct inaccurate data</li>
+                                    <li><strong>Right to Erasure:</strong> Delete your account and all data</li>
+                                    <li><strong>Right to Restrict Processing:</strong> Limit how we use your data</li>
+                                    <li><strong>Right to Data Portability:</strong> Export your data</li>
+                                    <li><strong>Right to Object:</strong> Opt-out of certain processing</li>
+                                    <li><strong>Right to Withdraw Consent:</strong> Change permissions anytime</li>
+                                    <li><strong>Right to Complain:</strong> Lodge a complaint with the ICO</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">Rights You Can Request via Email</h3>
+                                <ul class="list-disc list-inside space-y-1 ml-4">
+                                    <li><strong>Data Access:</strong> Detailed report of all data we have about you</li>
+                                    <li><strong>Data Correction:</strong> Fix inaccurate information in your profile</li>
+                                    <li><strong>Processing Restriction:</strong> Limit how we use your data</li>
+                                    <li><strong>Data Portability:</strong> Transfer your data to another service</li>
+                                    <li><strong>Objection to Processing:</strong> Stop certain data processing activities</li>
+                                </ul>
+                                <p class="text-sm mt-2">Contact us at <a href="mailto:privacy@chimealarm.app" class="text-chime-blue hover:underline">privacy@chimealarm.app</a> for these requests. We respond within 72 hours.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-chime-dark mb-2">How to Exercise Your Rights</h3>
+                                <p>You can exercise most rights directly in the app's Privacy Settings, or contact us at <a href="mailto:privacy@chimealarm.app" class="text-chime-blue hover:underline">privacy@chimealarm.app</a>. We respond within 30 days as required by UK GDPR.</p>
+                                <p class="text-sm mt-2">To complain to the UK regulator: <a href="https://ico.org.uk/" class="text-chime-blue hover:underline" target="_blank">Information Commissioner's Office</a></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">10. Children's Privacy</h2>
                         <p class="text-chime-gray leading-relaxed">
                             Chime is not intended for children under 13 years old. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it.
                         </p>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-bold text-chime-dark mb-3">9. International Data Transfers</h2>
-                        <p class="text-chime-gray leading-relaxed">
-                            Your information may be transferred and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data during such transfers.
-                        </p>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">11. International Data Transfers</h2>
+                        <div class="text-chime-gray leading-relaxed space-y-3">
+                            <p>As a UK company, we may transfer data outside the UK:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><strong>EU:</strong> PostHog analytics servers (adequate protection via EU-UK adequacy decision)</li>
+                                <li><strong>USA:</strong> Firebase, RevenueCat, AdMob (Standard Contractual Clauses)</li>
+                                <li><strong>Your Region:</strong> CloudKit stores data in your regional Apple data center</li>
+                            </ul>
+                            <p class="text-sm">All transfers comply with UK GDPR requirements for international data transfers.</p>
+                        </div>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-bold text-chime-dark mb-3">10. Changes to This Policy</h2>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">12. Changes to This Policy</h2>
                         <p class="text-chime-gray leading-relaxed">
                             We may update this Privacy Policy from time to time. We will notify you of any material changes through the app or via email. Your continued use of the app constitutes acceptance of the updated policy.
                         </p>
                     </section>
 
                     <section>
-                        <h2 class="text-xl font-bold text-chime-dark mb-3">11. Contact Us</h2>
-                        <p class="text-chime-gray leading-relaxed">
-                            If you have any questions about this Privacy Policy or our data practices, please contact us at <a href="mailto:support@chimealarm.app" class="text-chime-blue hover:underline">support@chimealarm.app</a>. We're committed to addressing your concerns promptly.
-                        </p>
+                        <h2 class="text-xl font-bold text-chime-dark mb-3">13. Contact Us</h2>
+                        <div class="text-chime-gray leading-relaxed">
+                            <p>For privacy questions or to exercise your rights:</p>
+                            <ul class="list-none space-y-2 mt-3">
+                                <li>📧 Privacy Inquiries: <a href="mailto:privacy@chimealarm.app" class="text-chime-blue hover:underline">privacy@chimealarm.app</a></li>
+                                <li>📧 General Support: <a href="mailto:support@chimealarm.app" class="text-chime-blue hover:underline">support@chimealarm.app</a></li>
+                                <li>🏢 Company: SLJ Labs Limited, United Kingdom</li>
+                            </ul>
+                            <p class="text-sm mt-3">We respond to all privacy requests within 30 days as required by UK GDPR.</p>
+                        </div>
                     </section>
                 </div>
 

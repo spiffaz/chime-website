@@ -1,0 +1,27 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "Y224FSGA47.com.playground.Chime",
+                "paths": [
+                    "/join/*",
+                    "/group/invite/*"
+                ],
+                "components": [
+                    {
+                        "/": "/join/*",
+                        "comment": "Group invitation links with short codes"
+                    },
+                    {
+                        "/": "/group/invite/*",
+                        "comment": "Alternative group invitation format for compatibility"
+                    }
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": ["Y224FSGA47.com.playground.Chime"]
+    }
+}

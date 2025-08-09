@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Group - Chime Alarm</title>
+    
+    <!-- App Store Smart Banner -->
+    <!-- Note: Replace APP_ID with actual App Store ID when available -->
+    <meta name="apple-itunes-app" content="app-id=APP_ID, app-argument=chime://group/invite/">
+    
+    <!-- Open Graph for rich sharing -->
+    <meta property="og:title" content="Join Group in Chime">
+    <meta property="og:description" content="You're invited! Download Chime to coordinate alarms with your group.">
+    <meta property="og:url" content="https://chimealarm.app/join/">
+    <meta property="og:image" content="https://chimealarm.app/assets/images/app-icon.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Join Group in Chime">
+    <meta name="twitter:description" content="You're invited! Download Chime to coordinate alarms with your group.">
+    <meta name="twitter:image" content="https://chimealarm.app/assets/images/app-icon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    
+    <style>
+        :root {
+            --chime-blue: #007AFF;
+            --chime-green: #34C759;
+            --chime-gray: #8E8E93;
+            --chime-light-gray: #F2F2F7;
+            --chime-dark: #1C1C1E;
+            --chime-white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--chime-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        /* Loading State */
+        #loading-section {
+            text-align: center;
+            color: var(--chime-white);
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--chime-white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        #loading-section p {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        /* Download State */
+        #download-section {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card {
+            background: var(--chime-white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--chime-dark);
+        }
+        
+        .description {
+            font-size: 16px;
+            color: var(--chime-gray);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .code {
+            background: var(--chime-light-gray);
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--chime-blue);
+            margin-bottom: 30px;
+            display: inline-block;
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            background: var(--chime-blue);
+            color: var(--chime-white);
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: #0051D5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .instructions {
+            font-size: 14px;
+            color: var(--chime-gray);
+            line-height: 1.5;
+            padding: 20px;
+            background: var(--chime-light-gray);
+            border-radius: 12px;
+        }
+        
+        .instructions strong {
+            color: var(--chime-dark);
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .code {
+                font-size: 20px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Loading State -->
+        <div id="loading-section">
+            <div class="spinner"></div>
+            <p>Opening Chime...</p>
+        </div>
+        
+        <!-- Download State (hidden initially) -->
+        <div id="download-section" style="display: none;">
+            <div class="card">
+                <!-- App Icon -->
+                <img src="/assets/images/app-icon.png" alt="Chime" class="app-icon">
+                
+                <div class="emoji">👥</div>
+                <h1>You're Invited!</h1>
+                <p class="description">Join a group in Chime to coordinate alarms together</p>
+                
+                <div class="code" id="invitation-code">Loading...</div>
+                
+                <a href="#" class="download-btn" id="download-button">
+                    Download Chime
+                </a>
+                
+                <div class="instructions">
+                    <strong>Already have Chime?</strong>
+                    The app should open automatically, or you can manually enter the code above in the app.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Extract code from URL path or hash
+        function getInvitationCode() {
+            // Try to get from path first (e.g., /join/ABC123)
+            const pathParts = window.location.pathname.split('/');
+            const pathCode = pathParts[pathParts.length - 1];
+            
+            if (pathCode && pathCode !== '' && pathCode !== 'index.html') {
+                return pathCode;
+            }
+            
+            // Fallback to hash (for GitHub Pages routing, e.g., /join/#ABC123)
+            if (window.location.hash) {
+                return window.location.hash.substring(1);
+            }
+            
+            // Default if no code found
+            return 'INVALID';
+        }
+        
+        const code = getInvitationCode();
+        
+        // Update the code display
+        document.getElementById('invitation-code').textContent = code;
+        
+        // Construct the deep link URL
+        const appURL = `chime://group/invite/${code}`;
+        
+        // Function to check if we're on iOS
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+        
+        // Function to check if we're on Safari
+        function isSafari() {
+            return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        }
+        
+        // Update download button based on platform
+        const downloadBtn = document.getElementById('download-button');
+        if (isIOS()) {
+            // Replace with actual App Store ID when available
+            downloadBtn.href = 'https://apps.apple.com/app/chime/id' + 'APP_ID';
+            downloadBtn.textContent = 'Download Chime';
+        } else {
+            // For non-iOS devices
+            downloadBtn.textContent = 'Chime is available for iOS';
+            downloadBtn.href = 'https://chimealarm.app';
+        }
+        
+        // Try to open the app
+        let appOpened = false;
+        
+        // Method 1: Direct location change (works best on iOS)
+        if (isIOS()) {
+            window.location.href = appURL;
+        } else {
+            // Method 2: Hidden iframe (fallback for other browsers)
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = appURL;
+            document.body.appendChild(iframe);
+            
+            // Clean up iframe after attempt
+            setTimeout(() => {
+                if (document.body.contains(iframe)) {
+                    document.body.removeChild(iframe);
+                }
+            }, 100);
+        }
+        
+        // Track if app opens (using visibility change)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                appOpened = true;
+            }
+        });
+        
+        // Show download section if app doesn't open within 2.5 seconds
+        setTimeout(() => {
+            if (!appOpened && !document.hidden) {
+                document.getElementById('loading-section').style.display = 'none';
+                document.getElementById('download-section').style.display = 'block';
+            }
+        }, 2500);
+        
+        // Track download button clicks (Google Analytics would go here)
+        document.getElementById('download-button').addEventListener('click', (e) => {
+            // Analytics tracking would go here when GA is set up
+            console.log('Download button clicked for code:', code);
+        });
+    </script>
+</body>
+</html>

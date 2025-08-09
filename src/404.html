@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages hack for client-side routing
+        // If the URL is /join/CODE, we need to handle it
+        const path = window.location.pathname;
+        if (path.startsWith('/join/')) {
+            // Redirect to the join page with the code as a hash
+            // This allows GitHub Pages to serve the static file
+            const code = path.substring(6); // Remove '/join/'
+            window.location.replace('/join/#' + code);
+        } else {
+            // For other 404s, redirect to home
+            window.location.replace('/');
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
